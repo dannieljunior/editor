@@ -1,0 +1,220 @@
+{**
+*  TCriptografa - vs99.01a
+*
+*  Copyright 97, 98 by Sebastião Elivaldo Ribeiro
+*  http://www.utranet.com.br/elivaldo
+*  e-mail: elivaldo@utranet.com.br
+*}
+
+unit Cripto;
+
+interface
+
+uses
+  SysUtils, WinTypes, WinProcs, Messages, Classes, Graphics, Controls,
+  Forms, Dialogs;
+
+type
+  TCriptografa = class(TComponent)
+  private
+    FKey: string;
+    FText: string;
+    FCriptoBin: string;
+    FCriptoHex: string;
+    procedure SetText(Value: string);
+    procedure SetKey(Value: string);
+    procedure SetCriptoBin(Value: string);
+    procedure SetCriptoHex(Value: string);
+    function Invert(SText: string): string;
+    function DecToHex(Number: Byte): string;
+    function HexToDec(Number: string): Byte;
+  public
+    constructor Create(AOwner: TComponent); override;
+    function TextToCriptoBin(SText: string): string;
+    function TextToCriptoHex(SText: string): string;
+    function CriptoBinToText(SText: string): string;
+    function CriptoHexToText(SText: string): string;
+  published
+    property CriptoBin: string read FCriptoBin write SetCriptoBin;
+    property CriptoHex: string read FCriptoHex write SetCriptoHex;
+    property Key: string read FKey write SetKey;
+    property Text: string read FText write SetText;
+  end;
+
+procedure Register;
+
+implementation
+
+
+{ Create }
+constructor TCriptografa.Create(AOwner: TComponent);
+const
+  bShareware: Boolean = False;
+begin
+  inherited Create(AOwner);
+  FKey := '@#$%';
+  // mensagem shareware
+{  if bShareware and not (csDesigning in ComponentState) then
+    begin
+      MessageBeep(MB_ICONASTERISK);
+      MessageDlg('   O componente ' + ClassName + ' é shareware, e para ' +
+        'utiliza-lo livremente' + #9#13 + '   você deve registra-lo.' + #13#13 +
+        '    http://www.utranet.com.br/elivaldo' + #13 +
+        '    mailto:elivaldo@utranet.com.br', mtInformation, [mbOk], 0);
+      bShareware := False;
+    end;}
+end;
+
+
+{ SetKey }
+procedure TCriptografa.SetKey(Value: string);
+begin
+  if FKey <> Value then
+    begin
+      FKey := Value;
+      FText := '';
+      FCriptoBin := '';
+      FCriptoHex := '';
+    end;
+end;
+
+
+{ SetText }
+procedure TCriptografa.SetText(Value: string);
+begin
+  if FText <> Value then
+    begin
+      FText := Value;
+      FCriptoBin := TextToCriptoBin(FText);
+      FCriptoHex := TextToCriptoHex(FText);
+    end;
+end;
+
+
+{ SetCriptoBin }
+procedure TCriptografa.SetCriptoBin(Value: string);
+begin
+  if FCriptoBin <> Value then
+    begin
+      FCriptoBin := Value;
+      FText := CriptoBinToText(FCriptoBin);
+      FCriptoHex := TextToCriptoHex(FText);
+    end;
+end;
+
+
+{ SetCriptoHex }
+procedure TCriptografa.SetCriptoHex(Value: string);
+begin
+  if FCriptoHex <> Value then
+    begin
+      FCriptoHex := Value;
+      FText := CriptoHexToText(FCriptoHex);
+      FCriptoBin := TextToCriptoBin(FText);
+    end;
+end;
+
+
+{ TextToCriptoBin }
+function TCriptografa.TextToCriptoBin(SText: string): string;
+var
+  SPos: Integer;
+  BKey: Byte;
+  S: string[1];
+begin
+  {inverte texto}
+  SText := Invert(SText);
+  {criptografa}
+  Result := '';
+  for SPos := 1 to Length(SText) do
+    begin
+      S := Copy(FKey, (SPos mod Length(FKey)) + 1, 1);
+      BKey := Ord(S[1]) + SPos;
+      Result := Result + Chr(Ord(SText[SPos]) xor BKey);
+    end;
+end;
+
+
+{ CriptoBinToText }
+function TCriptografa.CriptoBinToText(SText: string): string;
+var
+  SPos: Integer;
+  BKey: Byte;
+  S: string[1];
+begin
+  Result := '';
+  {converte}
+  for SPos := 1 to Length(SText) do
+    begin
+      S := Copy(FKey, (SPos mod Length(FKey)) + 1, 1);
+      BKey := Ord(S[1]) + SPos;
+      Result := Result + Chr(Ord(SText[SPos]) xor BKey);
+    end;
+  {inverte Result}
+  Result := Invert(Result);
+end;
+
+
+{ TextToCriptoHex }
+function TCriptografa.TextToCriptoHex(SText: string): string;
+var
+  SPos: Integer;
+begin
+  SText := TextToCriptoBin(SText);
+  {converte para hex}
+  Result := '';
+  for SPos := 1 to Length(SText) do
+    Result := Result + DecToHex(Ord(SText[SPos]));
+end;
+
+
+{ CriptoHexToText }
+function TCriptografa.CriptoHexToText(SText: string): string;
+var
+  SPos: Integer;
+begin
+  Result := '';
+  for SPos := 1 to (Length(SText) div 2) do
+    Result := Result + Chr(HexToDec(Copy(SText, ((SPos * 2) - 1), 2)));
+  {converte para texto}
+  Result := CriptoBinToText(Result);
+end;
+
+
+{ Invert }
+function TCriptografa.Invert(SText: string): string;
+var
+  Position: Integer;
+begin
+  Result := '';
+  for Position := Length(SText) downto 1 do
+    Result := Result + SText[Position];
+end;
+
+
+{ DecToHex }
+function TCriptografa.DecToHex(Number: Byte): string;
+begin
+  Result := Copy('0123456789ABCDEF', (Number mod 16) + 1, 1);
+  Number := Number div 16;
+  Result := Copy('0123456789ABCDEF', (Number mod 16) + 1, 1) + Result
+end;
+
+
+{ HexToDec }
+function TCriptografa.HexToDec(Number: string): Byte;
+begin
+  Number := UpperCase(Number);
+  Result := (Pos(Number[1], '0123456789ABCDEF') - 1) * 16;
+  Result := Result + (Pos(Number[2], '0123456789ABCDEF') - 1);
+end;
+
+
+{ Register }
+procedure Register;
+begin
+  RegisterComponents('TCF', [TCriptografa]);
+end;
+
+
+end.

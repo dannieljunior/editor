@@ -1,0 +1,250 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>TCF Library</title>
+</head>
+
+<body bgcolor="#FFFFFF" link="#0000FF">
+
+<p align="center"><font color="#004000" size="4" face="Verdana"><em><b>TCriptografa
+for Delphi<br>
+</b></em></font><font size="2" face="Verdana">Copyright </font><font
+color="#FF0000" size="2" face="Verdana">©</font><font size="2"
+face="Verdana"> by Sebastião Elivaldo Ribeiro<br>
+</font><a href="http://www.utranet.com.br/elivaldo"><font
+size="2" face="Verdana">http://www.utranet.com.br/elivaldo</font></a><font
+size="2" face="Verdana"><br>
+</font><a href="mailto:elivaldo@utranet.com.br"><font size="2"
+face="Verdana">elivaldo@utranet.com.br</font></a><font size="2"
+face="Verdana"><br>
+</font></p>
+
+<p><font color="#004000" size="4" face="Verdana"><em><b>Conteúdo:</b></em></font></p>
+
+<p><a href="#CodigoFonte"><font size="2" face="Verdana">Como
+obter o código fonte</font></a><font size="2" face="Verdana"><br>
+</font><a href="#Descricao"><font size="2" face="Verdana">Descrição
+do componente</font></a><font size="2" face="Verdana"><br>
+</font><a href="#Propriedades"><font size="2" face="Verdana">Propriedades</font></a><font
+size="2" face="Verdana"><br>
+</font><a href="#Metodos"><font size="2" face="Verdana">Métodos</font></a><font
+size="2" face="Verdana"><br>
+</font></p>
+
+<p>&nbsp;</p>
+
+<p><a name="CodigoFonte"><font color="#004000" size="4"
+face="Verdana"><em><strong>Como Obter o Código Fonte:</strong></em></font></a></p>
+
+<p><font size="2" face="Verdana">O componente <b>TCriptografa</b>
+é shareware, ou seja, para usa-lo livremente em seus sistemas
+você deverá registra-lo. Para obter maiores informações sobre
+como registrar e adquirir este componente, visite a página </font><a
+href="http://www.utranet.com.br/elivaldo"><font size="2"
+face="Verdana">http://www.utranet.com.br/elivaldo</font></a><font
+size="2" face="Verdana"> ou entre em contato com </font><a
+href="mailto:elivaldo@utranet.com.br"><font size="2"
+face="Verdana">elivaldo@utranet.com.br</font></a><font size="2"
+face="Verdana"> e solicite maiores esclarecimentos.<br>
+</font></p>
+
+<p>&nbsp;</p>
+
+<p><a name="Descricao"><font color="#004000" size="4"
+face="Verdana"><em><strong>Descrição do Componente:</strong></em></font></a></p>
+
+<p><font size="2" face="Verdana"><b>TCriptografa</b> é um
+componente não visual para criptografação de textos.<br>
+Para se criptografar basta colocar uma string na propriedade Text
+e imediatamente poderá se verificar o resultadado nas
+propriedades CriptoBin e CriptoHex. O inverso também é
+possível: coloca-se um texto criptografado binário na
+propriedade CriptoBin ou um texto criptografado hexadecimal na
+propriedade CriptoHex e tem-se a string original na propriedade
+Text.<br>
+</font></p>
+
+<p>&nbsp;</p>
+
+<p><a name="Propriedades"><font color="#004000" size="4"
+face="Verdana"><em><strong>Propriedades:</strong></em></font></a></p>
+
+<blockquote>
+    <p><font size="2" face="Verdana">CriptoBin: string</font></p>
+    <blockquote>
+        <p><font size="2" face="Verdana">Esta propriedade contém
+        a criptografação da string informada na propriedade
+        Text. O código ASCII dos caracteres resultantes da
+        criptografação estará entre 0 e 255. Não é ideal que
+        se use esta propriedade para armazenamento em banco de
+        dados e tabelas, uma vez que o driver utilizado pode
+        armazenar de forma incorreta os caracteres cujo ASCII
+        são superiores a 128. Quando você quizer armazenar o
+        resultado criptografado de uma string em BD ou tabelas
+        use o resultado contido na propriedade CriptoHex. Você
+        deve usar a propriedade CriptoBin para arquivos texto.</font></p>
+        <p><font size="2" face="Verdana">Exemplo:</font></p>
+        <pre><font size="2"><strong>procedure</strong></font><font
+size="2" face="Courier New"> Form1.Button1Click(Sender: TObject);
+</font><font size="2"><strong>var</strong></font><font size="2"
+face="Courier New">
+  C: </font><font size="2"><strong>string</strong></font><font
+size="2" face="Courier New">;
+</font><font size="2"><strong>begin</strong></font><font size="2"
+face="Courier New">
+  Criptografa1.Text := 'Texto normal';
+  C := Criptografa1.CriptoBin;  </font><font color="#0000A0"
+size="2"><em>{texto criptografado}</em></font><font size="2"
+face="Courier New">
+</font><font size="2"><strong>end</strong></font><font size="2"
+face="Courier New">;</font><font size="2" face="Verdana">
+</font></pre>
+    </blockquote>
+    <p><font size="2" face="Verdana">CriptoHex: string</font></p>
+    <blockquote>
+        <p><font size="2" face="Verdana">Contém a
+        criptografação da string setada na propriedade Text. Os
+        caracteres resultantes da criptografação estarão entre
+        os caracteres '0123456789ABCDEF'. Desta forma torna-se
+        prático o armazenamento em tabelas, porém o tamanho da
+        string contida em CriptoHex e 2 vezes o tamanho da string
+        em Text.<br>
+        </font></p>
+    </blockquote>
+    <p><font size="2" face="Verdana">Key: string</font></p>
+    <blockquote>
+        <p><font size="2" face="Verdana">Através desta
+        propriedade você especificará uma string que servirá
+        de chave e será usada no momento da criptografação.
+        Você deve personalizar esta chave para cada sistema,
+        assim ficará mais dificíl uma tentativa de quebra do
+        sigilo, impedindo que outra pessoa que possua o
+        TCriptografa consiga descriptografar suas informações.</font></p>
+        <p><font size="2" face="Verdana">Exemplo:</font></p>
+        <pre><font size="2"><strong>procedure</strong></font><font
+size="2" face="Courier New"> Form1.Button1Click(Sender: TObject);
+</font><font size="2"><strong>var</strong></font><font size="2"
+face="Courier New">
+  C: </font><font size="2"><strong>string</strong></font><font
+size="2" face="Courier New">;
+</font><font size="2"><strong>begin</strong></font><font size="2"
+face="Courier New">
+  Criptografa1.Key := 'Tjk823';  </font><font color="#0000A0"
+size="2"><em>{personaliza a chave}</em></font><font size="2"
+face="Courier New">
+  Criptografa1.Text := 'Texto normal';
+  C := Criptografa1.CriptoHex;  </font><font color="#0000A0"
+size="2"><em>{texto criptografado}</em></font><font size="2"
+face="Courier New">
+</font><font size="2"><strong>end</strong></font><font size="2"
+face="Courier New">;
+</font></pre>
+    </blockquote>
+    <p><font size="2" face="Verdana">Text: string</font></p>
+    <blockquote>
+        <p><font size="2" face="Verdana">Contém o texto original
+        da criptografação.</font></p>
+        <p><font size="2" face="Verdana">Exemplo:</font></p>
+        <pre><font size="2"><strong>procedure</strong></font><font
+size="2" face="Courier New"> Form1.Button1Click(Sender: TObject);
+</font><font size="2"><strong>var</strong></font><font size="2"
+face="Courier New">
+  S: </font><font size="2"><strong>string</strong></font><font
+size="2" face="Courier New">;
+</font><font size="2"><strong>begin</strong></font><font size="2"
+face="Courier New">
+  S := Table1.FieldByName('Senha').AsString;  </font><font
+color="#0000A0" size="2"><em>{pega senha criptografada}</em></font><font
+size="2" face="Courier New">
+  Criptografa1.CriptoHex := S;
+  </font><font size="2"><strong>if</strong></font><font size="2"
+face="Courier New"> Criptografa1.Text &lt;&gt; 'senha_do_sistema' </font><font
+size="2"><strong>then</strong></font><font size="2"
+face="Courier New">
+    Close;
+</font><font size="2"><strong>end</strong></font><font size="2"
+face="Courier New">;
+</font></pre>
+    </blockquote>
+    <blockquote>
+        <p>&nbsp;</p>
+    </blockquote>
+</blockquote>
+
+<p><a name="Metodos"><font color="#004000" size="4"
+face="Verdana"><em><strong>Métodos:</strong></em></font></a></p>
+
+<blockquote>
+    <p><font size="2" face="Verdana">TextToCriptoBin(Text:
+    string): string</font></p>
+    <blockquote>
+        <p><font size="2" face="Verdana">Este método retorna uma
+        string criptografada de forma binária. Ou seja, o
+        código dos caracteres que comporão a string de retorno
+        estará entre 0 e 255.</font></p>
+        <p><font size="2" face="Verdana">Exemplo:</font></p>
+        <pre><font size="2"><strong>procedure</strong></font><font
+size="2" face="Courier New"> Form1.Button1Click(Sender: TObject);
+</font><font size="2"><strong>var</strong></font><font size="2"
+face="Courier New">
+  C: </font><font size="2"><strong>string</strong></font><font
+size="2" face="Courier New">;
+</font><font size="2"><strong>begin</strong></font><font size="2"
+face="Courier New">
+  </font><font color="#0000A0" size="2"><em>{a variável C conterá a criptografação binária}
+</em></font><font size="2" face="Courier New">  C := Criptografa1.TextToCriptoBin('algum texto');
+</font><font size="2"><strong>end</strong></font><font size="2"
+face="Courier New">;
+</font></pre>
+    </blockquote>
+    <p><font size="2" face="Verdana">TextToCriptoHex(Text:
+    string): string</font></p>
+    <blockquote>
+        <p><font size="2" face="Verdana">Converte uma string para
+        outra string criptografada no formato hexadecimal. Neste
+        método os caracteres que comporão a string de retorno
+        estarão entre os seguintes: '0123456789ABCDEF'.</font></p>
+        <p><font size="2" face="Verdana"><strong>Obs.:</strong>
+        Neste caso o tamanho da string de retorno será o dobro
+        do tamanho da string original. Este formato é útil para
+        o armazenamento em tabelas.<br>
+        </font></p>
+    </blockquote>
+    <p><font size="2" face="Verdana">CriptoBinToText(Text:
+    string): string</font></p>
+    <blockquote>
+        <p><font size="2" face="Verdana">Retorna o texto original
+        de uma string criptografada no formato binário.<br>
+        </font></p>
+    </blockquote>
+    <p><font size="2" face="Verdana">CriptoHexToText(Text:
+    string): string</font></p>
+    <blockquote>
+        <p><font size="2" face="Verdana">Retorna o texto original
+        de uma string criptografada no formato hexadecimal.</font></p>
+        <p><font size="2" face="Verdana">Exemplo:</font></p>
+        <pre><font size="2"><strong>procedure</strong></font><font
+size="2" face="Courier New"> Form1.Button1Click(Sender: TObject);
+</font><font size="2"><strong>var</strong></font><font size="2"
+face="Courier New">
+  S: </font><font size="2"><strong>string</strong></font><font
+size="2" face="Courier New">;
+</font><font size="2"><strong>begin</strong></font><font size="2"
+face="Courier New">
+  S := Table1.FieldByName('Senha').AsString;  </font><font
+color="#0000A0" size="2"><em>{pega senha criptografada}</em></font><font
+size="2" face="Courier New">
+  </font><font size="2"><strong>if</strong></font><font size="2"
+face="Courier New"> Criptografa1.CriptoHexToText(S) &lt;&gt; 'senha_do_sistema' </font><font
+size="2"><strong>then</strong></font><font size="2"
+face="Courier New">
+    Close;
+</font><font size="2"><strong>end</strong></font><font size="2"
+face="Courier New">;</font></pre>
+    </blockquote>
+</blockquote>
+</body>
+</html>

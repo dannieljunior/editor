@@ -1,0 +1,4 @@
+Fbclient15 DLLFILE "C:\DevCSharp\NDiversos\EngeLib\source\fbclient15.dll"
+Fbclient25 DLLFILE "C:\DevCSharp\NDiversos\EngeLib\source\fbclient25.dll"
+DevartInterBase DLLFILE "C:\DevCSharp\NDiversos\EngeLib\source\dbexpida.dll"
+DevartSqlServer DLLFILE "C:\DevCSharp\NDiversos\EngeLib\source\dbexpsda.dll"

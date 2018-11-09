@@ -1,0 +1,53 @@
+package EngeLib;
+
+{$R *.res}
+{$R 'EngeLib.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Engegraph Sistemas - Componentes'}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  dbexpress,
+  dbrtl,
+  xmlrtl,
+  dbxcds,
+  vcl,
+  dsnap,
+  ibxpress,
+  designide,
+  PNG_D7,
+  Componentes;
+
+contains
+  untEngeAutenticador in 'source\untEngeAutenticador.pas',
+  untBase64 in 'source\untBase64.pas',
+  untConector in 'source\untConector.pas',
+  untUtils in 'source\untUtils.pas',
+  untEngeEnumerados in 'source\untEngeEnumerados.pas',
+  untFormRestrito in 'source\untFormRestrito.pas' {frmRestrito},
+  untEditorComponente in 'source\untEditorComponente.pas',
+  untDriverInfo in 'source\untDriverInfo.pas',
+  untSgbd in 'source\untSgbd.pas';
+
+end.

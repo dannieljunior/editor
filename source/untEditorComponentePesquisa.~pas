@@ -1,0 +1,60 @@
+unit untEditorComponentePesquisa;
+
+interface
+
+uses
+  Classes, DesignIntf, DesignEditors,
+  untEditorComponente, untEngeCampoPesquisa,
+  untFormRestrito, forms;
+
+type
+  TEngeEditorComponentePesquisa = class(TEngeAutenticadorEditor)
+    function GetVerbCount: Integer; override;
+    function GetVerb(Index: Integer): string; override;
+    procedure ExecuteVerb(Index: Integer); override;
+    procedure Edit; override;
+  end;
+
+  procedure Register;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponentEditor(TEngeCampoPesquisa, TEngeEditorComponentePesquisa);
+end;
+
+{ TEngeAutenticadorEditor }
+
+procedure TEngeEditorComponentePesquisa.Edit;
+begin
+  ExecuteVerb(2);
+end;
+
+procedure TEngeEditorComponentePesquisa.ExecuteVerb(Index: Integer);
+var f: TfrmRestrito;
+begin
+  case Index of
+    2: begin
+      //showmessage((self.Component as TEngeCampoPesquisa).ValueField);
+      f := TfrmRestrito.Create(application);
+      f.ShowModal();
+    end;
+  end;
+end;
+
+function TEngeEditorComponentePesquisa.GetVerb(Index: Integer): string;
+begin
+  result := inherited GetVerb(Index);
+
+  case Index of
+    2: result := 'Configurar pesquisa';
+  end;
+end;
+
+function TEngeEditorComponentePesquisa.GetVerbCount: Integer;
+begin
+  result := 3;
+end;
+
+end.
