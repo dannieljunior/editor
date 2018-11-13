@@ -51,6 +51,7 @@ contains
   untFormRestrito in 'source\untFormRestrito.pas' {frmRestrito},
   untEditorComponente in 'source\untEditorComponente.pas',
   untDriverInfo in 'source\untDriverInfo.pas',
-  untSgbd in 'source\untSgbd.pas';
+  untSgbd in 'source\untSgbd.pas',
+  untFormEditor in 'source\untFormEditor.pas' {frmEditor};
 
 end.

@@ -37,7 +37,10 @@ requires
   ibxpress,
   designide,
   PNG_D7,
-  Componentes;
+  Componentes,
+  IndyCore100,
+  IndySystem100,
+  IndyProtocols100;
 
 contains
   untEngeAutenticador in 'source\untEngeAutenticador.pas',
@@ -48,6 +51,7 @@ contains
   untFormRestrito in 'source\untFormRestrito.pas' {frmRestrito},
   untEditorComponente in 'source\untEditorComponente.pas',
   untDriverInfo in 'source\untDriverInfo.pas',
-  untSgbd in 'source\untSgbd.pas';
+  untSgbd in 'source\untSgbd.pas',
+  untFormEditor in 'source\untFormEditor.pas' {Form1};
 
 end.
