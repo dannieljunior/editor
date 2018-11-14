@@ -140,6 +140,5 @@ PrivateBuild=
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
 [HistoryLists\hlUnitOutputDirectory]
-Count=2
+Count=1
 Item0=.\dcu
-Item1=/dcu

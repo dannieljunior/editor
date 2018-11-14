@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, WPRuler, WPCTRRich, WPTbar, WPRTEDefs, WPCTRMemo;
+  Dialogs, WPRuler, WPTbar, WPRTEDefs, WPCTRMemo, WPCTRRich;
 
 type
   TfrmEditor = class(TForm)
@@ -20,6 +20,8 @@ type
 
 var
   frmEditor: TfrmEditor;
+
+
 
 implementation
 

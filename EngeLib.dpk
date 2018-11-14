@@ -40,7 +40,8 @@ requires
   Componentes,
   IndyCore100,
   IndySystem100,
-  IndyProtocols100;
+  vcljpg,
+  WPTools7_D7;
 
 contains
   untEngeAutenticador in 'source\untEngeAutenticador.pas',
@@ -52,6 +53,7 @@ contains
   untEditorComponente in 'source\untEditorComponente.pas',
   untDriverInfo in 'source\untDriverInfo.pas',
   untSgbd in 'source\untSgbd.pas',
-  untFormEditor in 'source\untFormEditor.pas' {frmEditor};
+  untFormEditor in 'source\untFormEditor.pas' {frmEditor},
+  untEngeEditor in 'source\untEngeEditor.pas';
 
 end.

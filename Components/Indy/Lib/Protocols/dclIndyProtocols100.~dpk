@@ -1,19 +1,13 @@
 package dclIndyProtocols100;
 
 {$R *.res}
-{$ALIGN 8}
-{$ASSERTIONS ON}
 {$BOOLEVAL OFF}
-{$DEBUGINFO ON}
 {$EXTENDEDSYNTAX ON}
 {$IMPORTEDDATA ON}
-{$IOCHECKS ON}
 {$LOCALSYMBOLS ON}
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
 {$OPTIMIZATION ON}
-{$OVERFLOWCHECKS OFF}
-{$RANGECHECKS OFF}
 {$REFERENCEINFO ON}
 {$SAFEDIVIDE OFF}
 {$STACKFRAMES OFF}
@@ -28,10 +22,10 @@ package dclIndyProtocols100;
 
 requires
   designide,
+  IndyProtocols100,
   IndySystem100,
   IndyCore100,
-  dclIndyCore100,
-  EngeLib;
+  dclIndyCore100;
 
 contains
   IdDsnRegister in 'IdDsnRegister.pas',

@@ -1,9 +1,9 @@
 object frmEditor: TfrmEditor
-  Left = 213
-  Top = 263
+  Left = 529
+  Top = 272
   BorderStyle = bsNone
-  ClientHeight = 441
-  ClientWidth = 680
+  ClientHeight = 620
+  ClientWidth = 880
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,7 +17,7 @@ object frmEditor: TfrmEditor
   object wpReguaH: TWPRuler
     Left = 0
     Top = 54
-    Width = 680
+    Width = 880
     Height = 26
     DrawOptions = [wrUseSmallNumbers, wpDrawPageShade]
     Options = [wrShowTabStops, wpUseIntervalls, wpNoVertRulerAttached]
@@ -30,7 +30,7 @@ object frmEditor: TfrmEditor
     Left = 0
     Top = 80
     Width = 26
-    Height = 361
+    Height = 540
     DrawOptions = [wrUseSmallNumbers, wpDrawPageShade]
     ColorMargin = clBtnShadow
     ColorPaper = clWindow
@@ -39,7 +39,7 @@ object frmEditor: TfrmEditor
   object wpToolbar: TWPToolbar
     Left = 0
     Top = 0
-    Width = 680
+    Width = 880
     Height = 54
     ImageStretch = False
     ColorTo = 15790316
@@ -63,8 +63,8 @@ object frmEditor: TfrmEditor
   object WPRichText1: TWPRichText
     Left = 26
     Top = 80
-    Width = 654
-    Height = 361
+    Width = 854
+    Height = 540
     RTFVariables = <>
     WPToolBar = wpToolbar
     WPRuler = wpReguaH

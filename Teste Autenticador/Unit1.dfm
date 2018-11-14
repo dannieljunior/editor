@@ -1,9 +1,8 @@
 object Form1: TForm1
-  Left = 290
-  Top = 329
+  Left = 219
+  Top = 180
   Width = 701
   Height = 425
-  BorderStyle = bsSizeToolWin
   Caption = 'Teste do Autenticador'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -28,8 +27,8 @@ object Form1: TForm1
       Left = 1
       Top = 1
       Width = 683
-      Height = 128
-      Align = alTop
+      Height = 239
+      Align = alClient
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -41,10 +40,10 @@ object Form1: TForm1
     end
     object DBGrid1: TDBGrid
       Left = 1
-      Top = 129
+      Top = 240
       Width = 683
-      Height = 215
-      Align = alClient
+      Height = 104
+      Align = alBottom
       BorderStyle = bsNone
       DataSource = DataSource1
       TabOrder = 1
@@ -53,6 +52,7 @@ object Form1: TForm1
       TitleFont.Height = -11
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
+      Visible = False
     end
     object Panel2: TPanel
       Left = 1
@@ -62,6 +62,7 @@ object Form1: TForm1
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 2
+      Visible = False
       object Button1: TButton
         Left = 520
         Top = 4
@@ -101,7 +102,12 @@ object Form1: TForm1
     ExtrairDlls = False
     Driver = tdDevart
     OnDepoisAutenticar = autenticadorDepoisAutenticar
+    UsaServicoAuditoria = False
     Left = 233
     Top = 49
+  end
+  object EngeEditor1: TEngeEditor
+    Left = 321
+    Top = 57
   end
 end

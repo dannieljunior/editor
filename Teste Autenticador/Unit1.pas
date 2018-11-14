@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, untEngeAutenticador, DB, SqlExpr, DBXpress, ExtCtrls, untEngeEnumerados,
-  DBClient, SimpleDS, Grids, DBGrids;
+  DBClient, SimpleDS, Grids, DBGrids, untEngeEditor;
 
 type
   TForm1 = class(TForm)
@@ -18,6 +18,7 @@ type
     Button1: TButton;
     SQLConnection1: TSQLConnection;
     autenticador: TEngeAutenticador;
+    EngeEditor1: TEngeEditor;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Erro(e: Exception);
@@ -43,7 +44,7 @@ var s: AnsiString;
     teste: string;
 begin
 
-      autenticador.Sistema := siRics;
+      (*autenticador.Sistema := siRics;
       autenticador.TipoConexao := tcOracle;
 
       if(Trim(ParamStr(1)) <> EmptyStr) then
@@ -64,13 +65,20 @@ begin
             SimpleDataSet1.DataSet.CommandText := 'SELECT * FROM FUNCIONARIOS';
             SimpleDataSet1.Open;
          end;
+
+
+
       end
       except
         on e: Exception do
         begin
           ShowMessage(e.Message);
         end;
-      end
+      end   *)
+
+               EngeEditor1.Load(Panel1);
+
+
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
